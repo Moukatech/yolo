@@ -1,10 +1,10 @@
 FROM node:12
 
-WORKDIR /app
+WORKDIR /client
 
-COPY package*.json ./
+COPY package*.json /client
 
-RUN cd client
+RUN ls -la
 
 RUN npm install
 
@@ -15,3 +15,4 @@ ENV PORT = 5001
 EXPOSE 5001
 
 CMD ["npm", "start"]
+
