@@ -1,14 +1,12 @@
 FROM node:12
 
-WORKDIR /client
+WORKDIR /backend
 
-COPY client/package*.json ./
-
-RUN ls -la
+COPY backend/package*.json ./
 
 RUN npm install
 
-COPY client/ .
+COPY backend/ .
 
 ENV PORT = 5001
 

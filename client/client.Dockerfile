@@ -4,15 +4,13 @@ WORKDIR /client
 
 COPY client/package*.json ./
 
-RUN ls -la
-
 RUN npm install
 
 COPY client/ .
 
-ENV PORT = 5001
+ENV PORT = 8000
 
-EXPOSE 5001
+EXPOSE 8000
 
 CMD ["npm", "start"]
 
