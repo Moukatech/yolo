@@ -2,13 +2,13 @@ FROM node:12
 
 WORKDIR /client
 
-COPY package*.json /client
+COPY client/package*.json ./
 
 RUN ls -la
 
 RUN npm install
 
-COPY . .
+COPY client/ .
 
 ENV PORT = 5001
 
