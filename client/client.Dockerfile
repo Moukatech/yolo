@@ -8,9 +8,7 @@ RUN npm install
 
 COPY client/ .
 
-ENV PORT = 8000
-
-EXPOSE 8000
+EXPOSE $PORT
 
 CMD ["npm", "start"]
 

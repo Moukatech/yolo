@@ -8,9 +8,7 @@ RUN npm install
 
 COPY backend/ .
 
-ENV PORT = 5001
-
-EXPOSE 5001
+EXPOSE $PORT
 
 CMD ["npm", "start"]
 
