@@ -1,6 +1,6 @@
-FROM node:12
+FROM node:17.8.0
 
-WORKDIR /backend
+WORKDIR /usr/src/backend
 
 COPY backend/package*.json ./
 
@@ -8,7 +8,6 @@ RUN npm install
 
 COPY backend/ .
 
-EXPOSE $PORT
+EXPOSE 4000
 
-CMD ["npm", "start"]
-
+CMD [ "node", "server.js"]

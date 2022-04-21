@@ -2,21 +2,30 @@ version: '3'
 services:
   yolo-app-db:
     image: mongo-express
-    environment:
-      MONGO_INITDB_DATABASE: yolomy
     ports:
       - 27017:27017
+    volumes: 
+      - mongo_db:/data/db
+    networks:
+      - yolo
   yolo-app-frontend:
+    build: client/
     image: client/yoloapp:1.0
-    environment:
-      PORT: 3000
-      # PROXY_API: http://yolo-app-backend:8080/
     ports:
       - 3000:3000
+    networks:
+      - yolo
   yolo-app-backend:
+    build: backend/
     image: backend/yoloapp:1.0
-    environment:
-      PORT: 5001
-      MONGODB_URI: mongodb://localhost/yolomy
     ports:
       - 5001:5001
+    networks:
+      - yolo
+    
+networks:
+  yolo:
+    driver: bridge
+
+volumes:
+  mongo_db: {}

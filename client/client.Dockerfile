@@ -1,6 +1,6 @@
-FROM node:12
+FROM node:14-alpine
 
-WORKDIR /client
+WORKDIR /usr/src/client
 
 COPY client/package*.json ./
 
@@ -8,7 +8,10 @@ RUN npm install
 
 COPY client/ .
 
-EXPOSE $PORT
+RUN npm run build
 
-CMD ["npm", "start"]
+RUN npm install -g serve
 
+EXPOSE 3000
+
+CMD [ "serve", "-s", "build", "-l", "3000" ]
